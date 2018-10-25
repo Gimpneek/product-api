@@ -7,7 +7,7 @@ from api.models.product import Product
 
 PRODUCT_NAME = 'Lavender Heart'
 PRODUCT_PRICE = 9.25
-PRODUCTS_URL = '/products'
+PRODUCTS_URL = '/v1/products'
 
 
 def create_product(name=None, price=None):

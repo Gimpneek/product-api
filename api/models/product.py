@@ -11,7 +11,10 @@ class Product(models.Model):
     """
 
     name = models.CharField(max_length=256)
-    price = models.FloatField()
+    price = models.DecimalField(
+        decimal_places=2,
+        max_digits=16
+    )
 
     def __str__(self):
         """

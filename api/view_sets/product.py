@@ -16,6 +16,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     serializer_class = ProductSerializer
     queryset = Product.objects.all().order_by('id')
+    pagination_class = None
 
     def create(self, request, *args, **kwargs):
         """
@@ -30,9 +31,19 @@ class ProductViewSet(viewsets.ModelViewSet):
                 name=form.cleaned_data.get('name'),
                 price=form.cleaned_data.get('price')
             )
-            return Response(status=status.HTTP_201_CREATED)
+            return Response(status=status.HTTP_200_OK)
         return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def get_serializer(self, *args, **kwargs):
         kwargs['partial'] = True
         return super(ProductViewSet, self).get_serializer(*args, **kwargs)
+
+    def destroy(self, request, *args, **kwargs):
+        """
+        Override DELETE to return 200 as defined in test
+
+        :param request: Django request
+        :return: Django Response
+        """
+        super(ProductViewSet, self).destroy(request, *args, **kwargs)
+        return Response(status=status.HTTP_200_OK)
