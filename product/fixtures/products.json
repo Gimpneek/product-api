@@ -1,0 +1,26 @@
+[
+  {
+    "model": "api.product",
+    "pk": 1,
+    "fields": {
+      "name": "Lavender heart",
+      "price": 9.25
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 2,
+    "fields": {
+      "name": "Personalised cufflinks",
+      "price": 45.0
+    }
+  },
+  {
+    "model": "api.product",
+    "pk": 3,
+    "fields": {
+      "name": "Kids T-shirt",
+      "price": 19.95
+    }
+  }
+]
