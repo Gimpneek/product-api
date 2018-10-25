@@ -35,7 +35,7 @@ class TestProductCollection(ProductAPICase):
                 'price': 6.66
             }
         )
-        self.assertEqual(resp.status_code, 201)
+        self.assertEqual(resp.status_code, 200)
 
     def test_post_creates_product(self):
         """
@@ -49,7 +49,10 @@ class TestProductCollection(ProductAPICase):
             }
         )
         product = Product.objects.get(name='Satan')
-        self.assertEqual(product.price, 6.66)
+        self.assertEqual(
+            str(product.price),
+            '6.66'
+        )
 
     def test_post_error(self):
         """
@@ -139,7 +142,7 @@ class TestProductResource(ProductAPICase):
         Test that DELETE removes the Product
         """
         resp = self.api.delete(self.url)
-        self.assertEqual(resp.status_code, 204)
+        self.assertEqual(resp.status_code, 200)
 
     def test_delete_removes_record(self):
         """

@@ -13,7 +13,7 @@ class TestProductCollection(ProductAPICase):
         """
         super(TestProductCollection, self).setUp()
         resp = self.api.get(PRODUCTS_URL)
-        self.result = resp.data.get('results')[0]
+        self.result = resp.data[0]
 
     def test_id(self):
         """
@@ -31,7 +31,10 @@ class TestProductCollection(ProductAPICase):
         """
         Test that price for the product is return correctly
         """
-        self.assertEqual(self.result.get('price'), self.product.price)
+        self.assertEqual(
+            self.result.get('price'),
+            str(self.product.price)
+        )
 
 
 class TestProductResource(ProductAPICase):
@@ -63,4 +66,7 @@ class TestProductResource(ProductAPICase):
         """
         Test that price for the product is return correctly
         """
-        self.assertEqual(self.result.get('price'), self.product.price)
+        self.assertEqual(
+            self.result.get('price'),
+            str(self.product.price)
+        )
