@@ -17,3 +17,11 @@ unit_test:
 	@venv/bin/python manage.py test
 
 test: lint unit_test
+
+reset_db:
+	@rm db.sqlite3
+	@venv/bin/python manage.py migrate
+	@venv/bin/python manage.py loaddata product/fixtures/products.json
+
+run:
+	venv/bin/python manage.py runserver 5000
